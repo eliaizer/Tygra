@@ -1,0 +1,2 @@
+# Tygra
+GUI for ffmpeg
