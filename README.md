@@ -8,4 +8,4 @@ GUI for ffmpeg
   - [ ] Work
   - [ ] View and update in real-time available features for work
 - [ ] Installer (for Windows and maybe for Linux)
-- [ ] CI/CD (for mu update and update ffmpeg)
+- [ ] CI/CD (for my update and update ffmpeg)
