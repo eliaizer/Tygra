@@ -58,8 +58,8 @@ class frontendTygra(TkinterDnD.CTk):
 
         self.input = CTkFrame(self.left)
 
-        self.loptions = CTkFrame(self.left)
-        CTkLabel(self.loptions, text="Опции (обновляются в зависимости от входящих файлов").pack(fill="x", padx=10, pady=10)
+        self.input_options = CTkFrame(self.left)
+        CTkLabel(self.input_options, text="Опции (обновляются в зависимости от входящих файлов").pack(fill="x", padx=10, pady=10)
 
         self.input.drop_target_register(DND_FILES)
         self.input.dnd_bind("<<Drop>>", self.on_drop_input)
@@ -72,7 +72,7 @@ class frontendTygra(TkinterDnD.CTk):
 
         self.left.pack(side="left", fill="y", padx=10, pady=10)
         self.input.pack(side="top", fill="x", padx=10, pady=10)
-        self.loptions.pack(side="top", fill="x", padx=10, pady=10)
+        self.input_options.pack(side="top", fill="x", padx=10, pady=10)
         self.input_string_group.pack(side="top", fill="x", padx=10, pady=10)
         self.input_label.pack()
         self.input_string.pack(side="left")
@@ -90,8 +90,8 @@ class frontendTygra(TkinterDnD.CTk):
 
         self.output = CTkFrame(self.right)
 
-        self.roptions = CTkFrame(self.right)
-        CTkLabel(self.roptions, text="Опции (обновляются в зависимости от входящих файлов").pack(fill="x", padx=10,
+        self.output_options = CTkFrame(self.right)
+        CTkLabel(self.output_options, text="Опции (обновляются в зависимости от входящих файлов").pack(fill="x", padx=10,
                                                                                                 pady=10)
 
         self.output.drop_target_register(DND_FILES)
@@ -107,7 +107,7 @@ class frontendTygra(TkinterDnD.CTk):
 
         self.right.pack(side="right", fill="y", padx=10, pady=10)
         self.output.pack(side="top", fill="x", padx=10, pady=10)
-        self.roptions.pack(side="top", fill="x", padx=10, pady=10)
+        self.output_options.pack(side="top", fill="x", padx=10, pady=10)
         self.output_string_group.pack(side="top", fill="x", padx=10, pady=10)
         self.output_label.pack()
         self.output_string.pack(side="left")
