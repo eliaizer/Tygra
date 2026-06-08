@@ -3,7 +3,7 @@ GUI for ffmpeg
 
 ## Road-map
 - [x] App on CustomTkinter
-- [ ] Drag-and-Drop
+- [x] Drag-and-Drop
 - [ ] ffmpeg integration
   - [ ] Work
   - [ ] View and update in real-time available features for work

@@ -1,8 +1,7 @@
 from tkinter.filedialog import askopenfiles, askopenfilenames
-
 from customtkinter import *
-
 from tkinterdnd2 import DND_FILES, TkinterDnD
+
 
 
 class frontendTygra(TkinterDnD.CTk):
@@ -11,6 +10,8 @@ class frontendTygra(TkinterDnD.CTk):
         self.worker = worker
         self.title("Tygra - графический ffmpeg")
         self.iconbitmap("res/circle.ico")
+
+        self.font = CTkFont(family="JetBrains Mono", size=14)
 
         self.x = int(self.winfo_screenwidth() * 0.35)
         self.y = int(self.winfo_screenheight() * 0.35)
@@ -44,22 +45,17 @@ class frontendTygra(TkinterDnD.CTk):
         pass
 
     def init_ui(self):
-        #self.label = CTkLabel(self, text="Перетащи файл сюда")
-        #self.label.pack(pady=50)
         self.init_ui_left()
         self.init_ui_right()
+        self.init_ui_options()
         # Добавить выбор множества файлов или папок
 
         # Подумать над сохранением нескольких файлов сразу
-
 
     def init_ui_left(self):
         self.left = CTkFrame(self, width=(self.x * 0.95) // 2)
 
         self.input = CTkFrame(self.left)
-
-        self.input_options = CTkFrame(self.left)
-        CTkLabel(self.input_options, text="Опции (обновляются в зависимости от входящих файлов").pack(fill="x", padx=10, pady=10)
 
         self.input.drop_target_register(DND_FILES)
         self.input.dnd_bind("<<Drop>>", self.on_drop_input)
@@ -72,27 +68,16 @@ class frontendTygra(TkinterDnD.CTk):
 
         self.left.pack(side="left", fill="y", padx=10, pady=10)
         self.input.pack(side="top", fill="x", padx=10, pady=10)
-        self.input_options.pack(side="top", fill="x", padx=10, pady=10)
+
         self.input_string_group.pack(side="top", fill="x", padx=10, pady=10)
         self.input_label.pack()
         self.input_string.pack(side="left")
         self.input_button.pack(side="right")
 
-        #CTkLabel(left, text="Какой файл вы хотите конвертировать?").pack(side="left", fill="y", padx=10, pady=10)
-
-
-        #ffmpegOption = CTkFrame(left, bg_color="white")
-        #ffmpegOption.pack(pady=10)
-        # Добавить появление флагов для выбранного файла
-
     def init_ui_right(self):
         self.right = CTkFrame(self, width=(self.x * 0.95) // 2)
 
         self.output = CTkFrame(self.right)
-
-        self.output_options = CTkFrame(self.right)
-        CTkLabel(self.output_options, text="Опции (обновляются в зависимости от входящих файлов").pack(fill="x", padx=10,
-                                                                                                pady=10)
 
         self.output.drop_target_register(DND_FILES)
         self.output.dnd_bind("<<Drop>>", self.on_drop_output)
@@ -107,14 +92,22 @@ class frontendTygra(TkinterDnD.CTk):
 
         self.right.pack(side="right", fill="y", padx=10, pady=10)
         self.output.pack(side="top", fill="x", padx=10, pady=10)
-        self.output_options.pack(side="top", fill="x", padx=10, pady=10)
         self.output_string_group.pack(side="top", fill="x", padx=10, pady=10)
         self.output_label.pack()
         self.output_string.pack(side="left")
         self.output_button.pack(side="right")
 
+    def init_ui_options(self):
+        self.options = CTkFrame(self, width=self.x * 0.95)
 
+        self.input_options = CTkFrame(self.options)
+        CTkLabel(self.options, text="Опции (обновляются в зависимости от входящих файлов").pack(fill="x", padx=10,
+                                                                                                      pady=10)
 
-#logo = CTkImage(light_image=Image.open("res/circle.png"), size=(100, 100))
-#CTkLabel(app, text="", image=logo).pack(fill="x", pady=10, padx=10)
-#CTkLabel(app, text="Tygra - GUI конвертор на базе ffmpeg", font=('JetBrains Mono Bold', 20)).pack(fill="x", pady=10, padx=10)
+        self.output_options = CTkFrame(self.options)
+        CTkLabel(self.options, text="Опции (обновляются в зависимости от входящих файлов").pack(fill="x", padx=10,
+                                                                                                pady=10)
+
+        self.options.pack(side="top", fill="x", padx=10, pady=10)
+        self.input_options.pack(side="top", fill="x", padx=10, pady=10)
+        self.output_options.pack(side="top", fill="x", padx=10, pady=10)
